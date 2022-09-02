@@ -235,6 +235,44 @@ public class Search {
 		return -1;
 	};
 
+	public java.util.function.BiPredicate<Integer[], Integer> pairSum = (input, target) -> {
+
+		for (int index = 0; index < input.length; index++) {
+
+			for (int sIndex = index + 1; sIndex < input.length; sIndex++) {
+
+				// not required to occupied memory for checking condition
+
+//				int pairSum = input[index] + input[sIndex];
+//
+//				if (pairSum == target)
+//					return true;
+
+				if (input[index] + input[sIndex] == target)
+					return true;
+
+			}
+		}
+		return false;
+	};
+
+	public java.util.function.BiPredicate<Integer[], Integer> pairSumExists = (input, target) -> {
+
+		int start = 0;
+		int end = input.length - 1;
+
+		while (start <= end) {
+			if (input[start] + input[end] == target)
+				return true;
+
+			if (input[start] + input[end] > target)
+				end--;
+			else
+				start++;
+		}
+		return false;
+	};
+
 	public static void main(String... strings) {
 
 		Search search = new Search();
@@ -282,9 +320,17 @@ public class Search {
 //		System.out.println(result);
 
 //		Integer[] input = { 5, 20, 40, 30, 20, 50, 60 };
-		Integer[] input = { 5, 10, 20, 40, 60, 70, 80 };
+//		Integer[] input = { 5, 10, 20, 40, 60, 70, 80 };
+//
+//		int result = search.peakElement.apply(input);
+//		System.out.println(result);
 
-		int result = search.peakElement.apply(input);
+//		Integer[] input = { 3, 8, 13, 18 };
+//		Integer[] input = { 2, 5, 8, 12, 30 };
+		Integer[] input = { 2, 4, 8, 9, 11, 12, 20, 30 };
+		boolean result = search.pairSum.test(input, -23);
+		System.out.println(result);
+		result = search.pairSumExists.test(input, -23);
 		System.out.println(result);
 	}
 }
