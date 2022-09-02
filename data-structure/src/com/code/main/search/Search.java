@@ -273,6 +273,47 @@ public class Search {
 		return false;
 	};
 
+	public java.util.function.BiPredicate<Integer[], Integer> tripletSortedArray = (input, target) -> {
+
+		for (int index = 0; index < input.length - 2; index++) {
+
+			for (int j = index + 1; j < input.length - 1; j++) {
+
+				for (int k = j + 1; k < input.length; k++) {
+
+					int sum = input[index] + input[j] + input[k];
+
+					if (sum == target)
+						return true;
+				}
+			}
+		}
+		return false;
+	};
+
+	// (on)2
+	public java.util.function.BiPredicate<Integer[], Integer> tripletEqaulToTarget = (input, target) -> {
+
+		for (int index = 0; index < input.length; index++) {
+
+			int start = index + 1;
+			int end = input.length - 1;
+			int numberToFind = target - input[index];
+			while (start <= end) {
+
+				int sum = input[start] + input[end];
+
+				if (numberToFind == sum)
+					return true;
+				if (sum > target)
+					end--;
+				else
+					start++;
+			}
+		}
+		return false;
+	};
+
 	public static void main(String... strings) {
 
 		Search search = new Search();
@@ -327,10 +368,18 @@ public class Search {
 
 //		Integer[] input = { 3, 8, 13, 18 };
 //		Integer[] input = { 2, 5, 8, 12, 30 };
-		Integer[] input = { 2, 4, 8, 9, 11, 12, 20, 30 };
-		boolean result = search.pairSum.test(input, -23);
+//		Integer[] input = { 2, 4, 8, 9, 11, 12, 20, 30 };
+//		boolean result = search.pairSum.test(input, -23);
+//		System.out.println(result);
+//		result = search.pairSumExists.test(input, -23);
+//		System.out.println(result);
+
+		Integer[] input = { 2, 3, 4, 8, 9, 20, 40 };
+//		Integer[] input = { 1, 2, 5, 6 };
+		boolean result = search.tripletSortedArray.test(input, 32);
+		boolean res = search.tripletEqaulToTarget.test(input, 32);
 		System.out.println(result);
-		result = search.pairSumExists.test(input, -23);
-		System.out.println(result);
+		System.out.println(res);
+
 	}
 }
