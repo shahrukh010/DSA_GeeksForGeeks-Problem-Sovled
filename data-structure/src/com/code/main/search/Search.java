@@ -291,7 +291,7 @@ public class Search {
 		return false;
 	};
 
-	// (on)2
+	// optimize solution O(N)2
 	public java.util.function.BiPredicate<Integer[], Integer> tripletEqaulToTarget = (input, target) -> {
 
 		for (int index = 0; index < input.length; index++) {
