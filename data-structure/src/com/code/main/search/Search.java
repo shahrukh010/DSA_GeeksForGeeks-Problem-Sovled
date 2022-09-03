@@ -291,6 +291,26 @@ public class Search {
 		return false;
 	};
 
+	public double findMedianOfTwoSortedArray(int[] a, int[] b) {
+
+		int[] median = new int[a.length + b.length];
+		int n = median.length;
+
+		int k = 0;
+		for (int index = 0; index < a.length; index++)
+			median[k++] = a[index];
+		for (int index = 0; index < b.length; index++)
+			median[k++] = b[index];
+		Arrays.sort(median);
+		System.out.println(Arrays.toString(median));
+
+		if (n % 2 != 0)
+			return median[(median.length - 1) / 2];
+
+		else
+			return (median[(n / 2) - 1] + median[((n / 2) - 1) + 1]) / 2;
+	};
+
 	// optimize solution O(N)2
 	public java.util.function.BiPredicate<Integer[], Integer> tripletEqaulToTarget = (input, target) -> {
 
@@ -374,12 +394,23 @@ public class Search {
 //		result = search.pairSumExists.test(input, -23);
 //		System.out.println(result);
 
-		Integer[] input = { 2, 3, 4, 8, 9, 20, 40 };
+//		Integer[] input = { 2, 3, 4, 8, 9, 20, 40 };
 //		Integer[] input = { 1, 2, 5, 6 };
-		boolean result = search.tripletSortedArray.test(input, 32);
-		boolean res = search.tripletEqaulToTarget.test(input, 32);
-		System.out.println(result);
-		System.out.println(res);
+//		boolean result = search.tripletSortedArray.test(input, 32);
+//		boolean res = search.tripletEqaulToTarget.test(input, 32);
+//		System.out.println(result);
+//		System.out.println(res);
 
+//		int[] a = { 10, 20, 30, 40, 50 };
+//		int[] b = { 5, 15, 25, 35, 45 };
+
+//		int[] a = { 1, 2, 3, 4, 5, 6 };
+//		int[] b = { 10, 20, 30, 40, 50 };
+
+		int[] a = { 10, 20, 30, 40, 50, 60 };
+		int[] b = { 1, 2, 3, 4, 5 };
+
+		double result = search.findMedianOfTwoSortedArray(a, b);
+		System.out.println(result);
 	}
 }
