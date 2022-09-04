@@ -335,24 +335,26 @@ public class Search {
 	};
 
 	// Repeating element witout modifying array O(N)t/s
+	// +1 add given array is start from 0 other wise you can remove +1
+	// why because of in case of 0 your loop become inifite loop so avoid thing kind
+	// of cases.
 
 	public java.util.function.Function<Integer[], Integer> repeatEl = (input) -> {
 
-		int slow = input[0];
-		int fast = input[0];
+		int slow = input[0] + 1;
+		int fast = input[0] + 1;
 		do {
-			slow = input[slow];
-			fast = input[input[fast]];
+			slow = input[slow] + 1;
+			fast = input[input[fast] + 1] + 1;
 
 		} while (slow != fast);
 
-		slow = input[0];
+		slow = input[0] + 1;
 		while (slow != fast) {
-			slow = input[slow];
-			fast = input[fast];
+			slow = input[slow] + 1;
+			fast = input[fast] + 1;
 		}
-		return slow;
-
+		return slow - 1;
 	};
 
 	public static void main(String... strings) {
@@ -402,7 +404,7 @@ public class Search {
 //		System.out.println(result);
 
 //		Integer[] input = { 5, 20, 40, 30, 20, 50, 60 };
-//		Integer[] input = { 5, 10, 20, 40, 60, 70, 80 };
+//		Integer[] input = { 5, 10, 20, 40, 6, 70, 80 };
 //
 //		int result = search.peakElement.apply(input);
 //		System.out.println(result);
@@ -434,7 +436,8 @@ public class Search {
 //		double result = search.findMedianOfTwoSortedArray(a, b);
 //		System.out.println(result);
 
-		Integer[] input = { 1, 3, 2, 4, 6, 5, 7, 3 };
+		Integer[] input = { 0, 1, 3, 2, 4, 6, 5, 7, 3 };
+//		Integer[] input = { 0, 0, 1, 2, 3, 2, 5 };
 		Integer result = search.repeatEl.apply(input);
 		System.out.println(result);
 
