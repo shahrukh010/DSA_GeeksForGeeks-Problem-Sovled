@@ -334,6 +334,27 @@ public class Search {
 		return false;
 	};
 
+	// Repeating element witout modifying array O(N)t/s
+
+	public java.util.function.Function<Integer[], Integer> repeatEl = (input) -> {
+
+		int slow = input[0];
+		int fast = input[0];
+		do {
+			slow = input[slow];
+			fast = input[input[fast]];
+
+		} while (slow != fast);
+
+		slow = input[0];
+		while (slow != fast) {
+			slow = input[slow];
+			fast = input[fast];
+		}
+		return slow;
+
+	};
+
 	public static void main(String... strings) {
 
 		Search search = new Search();
@@ -407,10 +428,15 @@ public class Search {
 //		int[] a = { 1, 2, 3, 4, 5, 6 };
 //		int[] b = { 10, 20, 30, 40, 50 };
 
-		int[] a = { 10, 20, 30, 40, 50, 60 };
-		int[] b = { 1, 2, 3, 4, 5 };
+//		int[] a = { 10, 20, 30, 40, 50, 60 };
+//		int[] b = { 1, 2, 3, 4, 5 };
+//
+//		double result = search.findMedianOfTwoSortedArray(a, b);
+//		System.out.println(result);
 
-		double result = search.findMedianOfTwoSortedArray(a, b);
+		Integer[] input = { 1, 3, 2, 4, 6, 5, 7, 3 };
+		Integer result = search.repeatEl.apply(input);
 		System.out.println(result);
+
 	}
 }
