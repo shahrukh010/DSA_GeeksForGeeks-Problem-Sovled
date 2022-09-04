@@ -45,13 +45,14 @@ public class Bubble {
 	public static void main(String... strings) {
 
 		Bubble bubble = new Bubble();
-		int[] input = { 2, 10, 8, 7, 0 };
+//		int[] input = { 2, 10, 8, 7, 0 };
 //		int[] input = { 5, 3, 1, 0, -1, 2, 5, 4, 4 };
 		// bubble.bubbleSort(input);
-//		Integer[] numbers = { 5, 3, 1, 0, -1, 2, 5, 4, 4 };
-		Integer[] numbers = { 1, 2, 3, 4, 5, 6 };
+		Integer[] numbers = { 5, 3, 1, 0, -1, 2, 5, 4, 4, 10, 8, 9 };
+//		Integer[] numbers = { 1, 2, 3, 4, 5, 6 };
 
-		bubble.bubbleAlgo.accept(numbers);
-		System.out.println(Arrays.toString(numbers));
+//		bubble.bubbleAlgo.accept(numbers);
+//		System.out.println(Arrays.toString(numbers));
+
 	}
 }
