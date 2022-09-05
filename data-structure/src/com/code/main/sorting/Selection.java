@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Selection {
 
-	// it takes o(n2)all cases
+	// it takes o(n2)all cases(sorted or unsorted)
 	// Good thing is it takes less memory mostly uses in EEROM or where less read
 	// and write required
 	public java.util.function.Consumer<Integer[]> selectionSort = (input) -> {
