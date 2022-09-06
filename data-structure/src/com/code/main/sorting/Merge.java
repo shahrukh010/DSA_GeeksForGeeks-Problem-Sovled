@@ -58,6 +58,31 @@ public class Merge {
 
 	}
 
+	// iterative version of mergeSort
+
+	public void mergeIterative(int[] input) {
+
+		int pass = 0;
+		for (pass = 2; pass <= input.length; pass = pass * 2) {
+
+			for (int index = 0; index + pass - 1 < input.length; index = index + pass) {
+
+				int low = index;
+				int high = index + pass - 1;
+				int mid = ((low + high) / 2);
+
+				merge(input, low, mid, high);
+
+			}
+		}
+		// suppose we don't have pair of element then we can use this condition if
+		// single element are remaining in array
+		if (pass / 2 < input.length) {
+
+			merge(input, 0, (pass / 2) - 1, input.length - 1);
+		}
+	}
+
 	public void mergeSort(int[] input, int low, int high) {
 
 		if (low < high) {
@@ -76,12 +101,16 @@ public class Merge {
 		int[] b = { 0, 5, 6, 6, 15, 18 };
 //		merge.sortTwoArray(a, b);
 
-		int[] input = { 0, 10, 15, 20, 40, 1, 8, 11, 55, 7,-1,0,1,7,8,40,55 };
+		int[] input = { 0, 10, 15, 20, 40, 1, 8, 11, 55, 7, -1, 0, 1, 7, 8, 40, 55 };
 		int mid = ((0 + input.length - 1) / 2);
 //		merge.merge(input, 0, mid, input.length - 1);
 
-		merge.mergeSort(input, 0, input.length - 1);
-		System.out.println(Arrays.toString(input));
+//		merge.mergeSort(input, 0, input.length - 1);
+//		System.out.println(Arrays.toString(input));
+
+		int[] numbers = { 8, 3, 7, 4, 9, 2, 6, 5, 1 };
+		merge.mergeIterative(numbers);
+		System.out.println(Arrays.toString(numbers));
 
 	}
 }
