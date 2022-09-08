@@ -31,14 +31,12 @@ public class Intersection {
 				continue;
 			}
 
-			if (a[index] == b[j])
-				System.out.print(a[index] + " ");
-
 			if (a[index] < b[j])
 				index++;
 			else if (a[index] > b[j])
 				j++;
 			else {
+				System.out.print(a[index] + " ");
 				index++;
 				j++;
 			}
