@@ -65,6 +65,13 @@ public class SortingBasedProblem {
 		}
 		return res;
 	};
+	
+	
+	
+	
+	
+	
+	
 
 	public static void main(String... strings) {
 
@@ -74,8 +81,9 @@ public class SortingBasedProblem {
 		int result = inversion.apply(input);
 		System.out.println(result);
 
-		int[] numbers = { 40, 30, 20, 10 };
-		result = inversionCount(numbers, result, result);
+//		int[] numbers = { 40, 30, 20, 10 };
+		int[] numbers = { 1, 20, 6, 7, 5, 8, 11, 3 };
+		result = inversionCount(numbers, 0, numbers.length - 1);
 		System.out.println(result);
 	}
 }
